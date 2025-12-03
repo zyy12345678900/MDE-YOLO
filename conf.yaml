@@ -1,0 +1,45 @@
+# 1. Model & Data Configuration (Core Reproducibility)
+model: ultralytics/cfg/models/v11/mde-yolo.yaml  
+data: pothole.yaml  
+imgsz: 640    
+
+# 2. Core Training Parameters
+epochs: 200  
+batch: 16  
+workers: 8
+patience: 100  
+seed: 0  
+deterministic: true  
+
+# 3. Optimizer & Learning Rate Configuration
+optimizer: SGD  
+lr0: 0.01  
+lrf: 0.01  
+momentum: 0.937 
+weight_decay: 0.0005  
+warmup_epochs: 3.0  
+warmup_momentum: 0.8  
+warmup_bias_lr: 0.1  
+cos_lr: false  
+
+# 4. Loss Function Weights
+box: 7.5  
+cls: 0.5  
+dfl: 1.5 
+
+# 5. Data Augmentation (Core & Advanced)
+mosaic: 1.0  
+close_mosaic: 10  
+auto_augment: randaugment  
+erasing: 0.4  
+hsv_h: 0.015  
+hsv_s: 0.7  
+hsv_v: 0.4  
+translate: 0.1  
+scale: 0.5  
+fliplr: 0.5  
+
+# 6. Inference & Evaluation Configuration
+conf: null  # Confidence threshold (uses default if null)
+iou: 0.7  # NMS IoU threshold
+max_det: 300  # Maximum number of detections per image
